@@ -1,0 +1,34 @@
+# Dataset parameters
+dataset_name: 'vimeo90k' # the name of the dataset. it can be either KITTI or Cityscape
+dataset_path: '.' # for KITTI it's the txt files containing the real path of the images, and for Cityscape it's the path
+                  # to the directory that contains leftImg8bit and rightImg8bit folders
+resize: [144, 176]
+
+# Model parameters
+baseline_model: 'bls17' # can be bmshj18 for Variational image compression with a scale hyperprior by Ballé, et al.
+                          # or bls17 for End-to-end Optimized Image Compression by Ballé, et al.
+use_side_info: True # if True then the modified version of baseline model for distributed compression is used.
+num_filters: 192 # number of filters used in the baseline model network
+cuda: True
+load_weight: True
+weight_path: './outputs/weight/proposed_CAM_013_025_RC_bestV2.pt' # weight path for loading epoch == 26 psnr == 27.8 bpp == 0.136 dim == 128
+
+# Training parameters
+train: True
+epochs: 10
+train_batch_size: 4
+lr: 0.0001
+lambda: 0.013 # the lambda value in rate-distortion equation   # 0.0008   0.0012    0.0026   0.0048    0.007
+alpha: 1
+beta: 1
+distortion_loss: 'MSE' # can be MS-SSIM or MSE. selects the method by which the distortion is calculated during training
+verbose_period: 50 # this number determines the period (in terms of epoch count) of the console output. non-positive value indicates no verbose
+
+# Saving weights and results parameters
+save_weights: True
+save_output_path: './outputs' # path where results and weights will be saved
+experiment_name: 'bls17_with_side_info_MSE_lambda_0067'
+
+# Test parameters
+test: False
+save_image: True
