@@ -1,7 +1,16 @@
 # D2VC
 Deep distributed video coding
 
-To test the D2VC algorithm, first, download the pre-trained file from googledrive and than copy to output/weight/...
-then execute the file test.py.
+Download the dataset (Vimeo90K) : http://data.csail.mit.edu/tofu/dataset/vimeo_triplet.zip
 
-https://drive.google.com/file/d/10OJ2KwGJRJYz338lYGexE3hPFDdxWv7i/view?usp=sharing
+coded the first and the third frame of Vimeo90K dataset by intracoder (MLIC++ or intra H.266/VVC)
+
+Use the first and the third frames to create (offline) the side information frame using the interpolation model (CDFI model)
+
+Train the model D2VC using the second frame and the side information frame using mainColor.py
+
+Put into output/weight/... the weight of D2VC model and test the code using test.py   
+
+The pretrained models will be made publicly available on Github upon publication of the paper to ensure reproducibility and facilitate further research. 
+
+
